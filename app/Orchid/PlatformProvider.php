@@ -83,6 +83,11 @@ class PlatformProvider extends OrchidServiceProvider
                     return Dashboard::version();
                 }, Color::DARK()),
 
+            Menu::make('Posts')
+            ->icon('book-open')
+            ->route('platform.posts')
+            ->title('posts'),
+
             Menu::make(__('Users'))
                 ->icon('user')
                 ->route('platform.systems.users')

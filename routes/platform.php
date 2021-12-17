@@ -113,3 +113,9 @@ Route::screen('example-cards', ExampleCardsScreen::class)->name('platform.exampl
 Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('platform.example.advanced');
 
 //Route::screen('idea', 'Idea::class','platform.screens.idea');
+
+//-----------------------posts---------------//
+Route::screen('post/{post?}',\App\Orchid\Screens\Post\PostEditScreen::class)
+    ->name('platform.posts.edit');
+Route::screen('posts',\App\Orchid\Screens\Post\PostListScreen::class)
+    ->name('platform.posts');
