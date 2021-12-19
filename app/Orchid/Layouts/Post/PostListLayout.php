@@ -44,7 +44,7 @@ class PostListLayout extends Table
             ->render(function (Post $post){
                 return $post->user->name;
             }),
-            TD::make('id', 'ID')
+            TD::make('Image', 'Image')
                     ->width('150')
                     ->render(function (Post $post) {
                         // Please use view('path')

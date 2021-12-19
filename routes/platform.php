@@ -124,3 +124,22 @@ Route::screen('posts',\App\Orchid\Screens\Post\PostListScreen::class)
             ->parent('platform.index')
             ->push('All Posts');
     });
+
+
+//------------------------Category-------------//
+
+Route::screen('categories',\App\Orchid\Screens\Category\CategoryListScreen::class)
+    ->name('platform.categories')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push('All Categories');
+    });
+//Route::screen('category/{category?}',\App\Orchid\Screens\Category\CategoryEditScreen::class)
+//    ->name('platform.category.edit')
+//    ->breadcrumbs(function (Trail $trail){
+//        return $trail
+//            ->parent('platform.categories')
+//            ->push('Category');
+//    });
+

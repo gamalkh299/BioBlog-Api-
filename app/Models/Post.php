@@ -20,9 +20,15 @@ class Post extends Model
 
     }
 
-    public function image()
+    public function image(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Attachment::class, 'id', 'attachment_id')->withDefault();
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+
     }
 
 
