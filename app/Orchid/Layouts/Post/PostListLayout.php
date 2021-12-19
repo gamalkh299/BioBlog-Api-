@@ -40,6 +40,10 @@ class PostListLayout extends Table
             ->render(function (Post $post){
                return view('admin.active',['active'=>$post->is_published]);
             }),
+            TD::make('Created By')
+            ->render(function (Post $post){
+                return $post->user->name;
+            }),
             TD::make('id', 'ID')
                     ->width('150')
                     ->render(function (Post $post) {
