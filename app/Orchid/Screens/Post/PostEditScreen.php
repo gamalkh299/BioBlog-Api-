@@ -49,7 +49,17 @@ class PostEditScreen extends Screen
         return [
             Button::make('Create Post')
             ->method('CreateOrUpdate')
-            ->icon('plus'),
+            ->icon('plus')
+            ->canSee(!$this->exists),
+            Button::make('Update Post')
+            ->method('CreateOrUpdate')
+            ->icon('pencil')
+            ->canSee($this->exists),
+            Button::make('Delete')
+            ->method('delete')
+            ->icon('trash')
+            ->canSee($this->exists)
+            ->confirm('Are you Sure you want to delete this post ?')
 
         ];
     }
@@ -76,7 +86,12 @@ class PostEditScreen extends Screen
             $post->save();
             return  redirect()->route('platform.posts');
 
-            // post->user
-            //title => 'ahmed'
+    }
+
+    public function delete(Post $post)
+    {
+        $post->image()->delete();
+        $post->delete();
+        return redirect()->route('platform.posts');
     }
 }

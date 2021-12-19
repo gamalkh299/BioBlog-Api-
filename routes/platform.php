@@ -118,4 +118,9 @@ Route::screen('example-advanced', ExampleFieldsAdvancedScreen::class)->name('pla
 Route::screen('post/{post?}',\App\Orchid\Screens\Post\PostEditScreen::class)
     ->name('platform.posts.edit');
 Route::screen('posts',\App\Orchid\Screens\Post\PostListScreen::class)
-    ->name('platform.posts');
+    ->name('platform.posts')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push('All Posts');
+    });

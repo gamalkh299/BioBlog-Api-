@@ -4,11 +4,14 @@ namespace App\Orchid\Layouts\Post;
 
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Switcher;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Layouts\Rows;
 
-class PostRowLayout extends Rows
+class
+PostRowLayout extends Rows
 {
     /**
      * Used to create the title of a group of form elements.
@@ -34,6 +37,14 @@ class PostRowLayout extends Rows
             Switcher::make('post.is_published')
                 ->sendTrueOrFalse()
                 ->title('Is Published'),
+
+            Picture::make('post.attachment_id')
+            ->title('Upload Image')
+            ->targetId(),
+
+
+//todo: add category after you finish it
+
         ];
     }
 }

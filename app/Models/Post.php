@@ -4,9 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Attachment\Attachable;
+use Orchid\Attachment\Models\Attachment;
+use Orchid\Screen\AsSource;
 
 class Post extends Model
 {
-    use HasFactory;
-    protected $fillable=['title','description','image','is_published','user_id'];
+    use HasFactory, AsSource, Attachable;
+    protected $table='posts';
+    protected $fillable=['title','description','attachment_id','is_published','user_id'];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+
+    }
+
+    public function image()
+    {
+        return $this->hasOne(Attachment::class, 'id', 'attachment_id')->withDefault();
+    }
+
+
 }

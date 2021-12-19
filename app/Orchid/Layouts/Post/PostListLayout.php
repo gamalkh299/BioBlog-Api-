@@ -33,9 +33,28 @@ class PostListLayout extends Table
                     ->route('platform.posts.edit',$post);
             }),
             TD::make('description','description')
-                ->render(function (Post $post){
-                    return $post->description;
-                }),
+            ->render(function (Post $post){
+                return $post->description;
+            }),
+            TD::make('is_published', 'Is Published')
+            ->render(function (Post $post){
+               return view('admin.active',['active'=>$post->is_published]);
+            }),
+            TD::make('id', 'ID')
+                    ->width('150')
+                    ->render(function (Post $post) {
+                        // Please use view('path')
+                        if($post->attachment_id!=NULL){
+                            $image=$post->image;
+                        return "<img src='{$image->url()}'
+                              alt='sample'
+                              class='mw-100 d-block img-fluid'>";
+                        }else{
+
+                        return 'no image uploaded';
+                        }
+                    }),
+
         ];
     }
 }
