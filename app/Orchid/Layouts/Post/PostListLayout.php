@@ -28,19 +28,37 @@ class PostListLayout extends Table
     {
         return [
             TD::make('title','title')
+            ->sort()
+            ->filter('title')
             ->render(function (Post $post){
                 return Link::make($post->title)
                     ->route('platform.posts.edit',$post);
             }),
             TD::make('description','description')
+            ->sort()
+            ->filter('description')
             ->render(function (Post $post){
                 return substr($post->description,0,80).'..';
             }),
-            TD::make('is_published', 'Is Published')
+            TD::make('is_published', 'Published')
+            ->sort()
+            ->filter('is_published')
             ->render(function (Post $post){
                return view('admin.active',['active'=>$post->is_published]);
             }),
+            TD::make('Category', 'Category')
+                ->render(function (Post $post){
+                    if ($post->categories()->count()>0){
+                        $cats='';
+                        foreach ($post->categories as $category){
+                            $cats.= $category->name . " - ";
+                        }
+                        return $cats;
+                    }
+                    return 'Uncategorized';
+                }),
             TD::make('Created By')
+
             ->render(function (Post $post){
                 return $post->user->name;
             }),

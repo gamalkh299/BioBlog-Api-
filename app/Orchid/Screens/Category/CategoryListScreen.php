@@ -30,7 +30,7 @@ class CategoryListScreen extends Screen
     {
 
         return [
-            'category'=>Category::all(),
+            'category'=>Category::filters()->defaultSort('id', 'desc')->paginate(),
         ];
     }
 

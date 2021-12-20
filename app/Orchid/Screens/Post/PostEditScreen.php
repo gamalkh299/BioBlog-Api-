@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
 
 class PostEditScreen extends Screen
 {
@@ -84,6 +85,8 @@ class PostEditScreen extends Screen
             $post->user_id=Auth::id();
             }
             $post->save();
+            $post->categories()->syncWithoutDetaching($request->get('post')['categories']);
+            Toast::success('Post Saved Successfully');
             return  redirect()->route('platform.posts');
 
     }

@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Post;
 
 use App\Models\Post;
 use App\Orchid\Layouts\Post\PostListLayout;
+use Illuminate\Support\Facades\Auth;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
@@ -26,8 +27,14 @@ class PostListScreen extends Screen
      */
     public function query(): array
     {
+        if (Auth::user()->hasAccess('platform.systems.roles')){
+            $posts=Post::filters()->defaultSort('id', 'desc')->paginate();
+        }else{
+
+        $posts=Post::where('user_id',Auth::id())->get();
+        }
         return [
-            'posts'=> Post::all(),
+            'posts'=> $posts,
         ];
     }
 

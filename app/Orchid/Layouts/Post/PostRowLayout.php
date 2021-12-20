@@ -2,10 +2,13 @@
 
 namespace App\Orchid\Layouts\Post;
 
+use App\Models\Category;
 use Orchid\Screen\Field;
+use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Switcher;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Layouts\Rows;
@@ -24,13 +27,22 @@ PostRowLayout extends Rows
      * Get the fields elements to be displayed.
      *
      * @return Field[]
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function fields(): array
     {
         return [
-            Input::make('post.title')
-            ->title('title')
-            ->required(),
+            Group::make([
+                Input::make('post.title')
+                ->title('title')
+                ->required(),
+
+                Relation::make('post.categories')
+                ->fromModel(Category::class,'name','id')
+                ->title('Category')
+                ->multiple(),
+
+            ]),
             Quill::make('post.description')
             ->title('description')
             ->required(),
@@ -42,8 +54,6 @@ PostRowLayout extends Rows
             ->title('Upload Image')
             ->targetId(),
 
-
-//todo: add category after you finish it
 
         ];
     }
