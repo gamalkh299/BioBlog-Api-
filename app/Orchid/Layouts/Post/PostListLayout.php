@@ -34,7 +34,7 @@ class PostListLayout extends Table
             }),
             TD::make('description','description')
             ->render(function (Post $post){
-                return $post->description;
+                return substr($post->description,0,80).'..';
             }),
             TD::make('is_published', 'Is Published')
             ->render(function (Post $post){
