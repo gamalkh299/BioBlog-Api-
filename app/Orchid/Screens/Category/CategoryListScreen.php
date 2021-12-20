@@ -10,6 +10,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class CategoryListScreen extends Screen
 {
@@ -43,6 +44,7 @@ class CategoryListScreen extends Screen
         return [
             ModalToggle::make('Create Category')
             ->modal('category')
+            ->modalTitle('Create')
             ->method('CreateOrUpdate')
             ->icon('plus'),
         ];
@@ -59,20 +61,33 @@ class CategoryListScreen extends Screen
 
             Layout::modal('category', [
                 CategoryRowLayout::class,
-            ]),
+            ])->async('asyncGetData'),
 
 
             CategoryListLayout::class
+        ];
+    }
+
+
+    public function asyncGetData($category): array
+    {
+
+        return [
+            'category' => $category,
         ];
     }
     public function CreateOrUpdate(Request $request,Category $category)
     {
         $category->fill($request->get('category'))->save();
 
+        Toast::success('Category Created Successfully');
+
     }
 
-    public function delete()
+    public function delete(Category $category)
     {
-
+        $category->image()->delete();
+        $category->delete();
+        Toast::success('Category Deleted Successfully');
     }
 }
