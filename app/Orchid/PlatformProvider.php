@@ -93,6 +93,11 @@ class PlatformProvider extends OrchidServiceProvider
             ->route('platform.posts')
             ->title('posts'),
 
+            Menu::make('Comments')
+                ->icon('bubble')
+                ->route('platform.comments')
+                ,
+
 
             Menu::make(__('Users'))
                 ->icon('user')

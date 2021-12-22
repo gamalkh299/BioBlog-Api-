@@ -135,11 +135,11 @@ Route::screen('categories',\App\Orchid\Screens\Category\CategoryListScreen::clas
             ->parent('platform.index')
             ->push('All Categories');
     });
-//Route::screen('category/{category?}',\App\Orchid\Screens\Category\CategoryEditScreen::class)
-//    ->name('platform.category.edit')
-//    ->breadcrumbs(function (Trail $trail){
-//        return $trail
-//            ->parent('platform.categories')
-//            ->push('Category');
-//    });
 
+Route::screen('comments',\App\Orchid\Screens\Comments\CommentListScreen::class)
+    ->name('platform.comments')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push('All Comments');
+    });
