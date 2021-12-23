@@ -32,7 +32,7 @@ class PostListLayout extends Table
             ->filter('title')
             ->render(function (Post $post){
                 return Link::make($post->title)
-                    ->route('platform.posts.edit',$post);
+                    ->route('platform.posts.edit',$post->id);
             }),
             TD::make('description','description')
             ->sort()

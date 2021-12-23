@@ -77,15 +77,15 @@ class PostEditScreen extends Screen
         ];
     }
 
-    public function CreateOrUpdate(Request $request, Post $post)
+    public function CreateOrUpdate(Post $post,Request $request)
     {
-//       dd($request);
             $post->fill($request->get('post'));
             if (!$this->exists){
             $post->user_id=Auth::id();
             }
             $post->save();
-            $post->categories()->syncWithoutDetaching($request->get('post')['categories']);
+            $post->categories()->sync($request->get('post')['categories']);
+            $post->tags()->sync($request->get('post')['tags']);
             Toast::success('Post Saved Successfully');
             return  redirect()->route('platform.posts');
 
@@ -93,7 +93,10 @@ class PostEditScreen extends Screen
 
     public function delete(Post $post)
     {
+        $post->categories()->detach();
+        $post->tags()->detach();
         $post->image()->delete();
+        $post->comments()->delete();
         $post->delete();
         return redirect()->route('platform.posts');
     }

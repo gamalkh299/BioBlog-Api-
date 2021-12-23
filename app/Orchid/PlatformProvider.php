@@ -98,6 +98,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.comments')
                 ,
 
+            Menu::make('Tags & Hash-Tags')
+                ->icon('directions')
+                ->route('platform.tags')
+            ,
+
 
             Menu::make(__('Users'))
                 ->icon('user')

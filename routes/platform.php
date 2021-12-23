@@ -143,3 +143,13 @@ Route::screen('comments',\App\Orchid\Screens\Comments\CommentListScreen::class)
             ->parent('platform.index')
             ->push('All Comments');
     });
+
+
+Route::screen('tags',\App\Orchid\Screens\Tags\TagsListScreen::class)
+    ->name('platform.tags')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push('All tags');
+    });
+

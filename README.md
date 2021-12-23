@@ -1,5 +1,5 @@
 
-- tags 
+- ~~tags~~ 
 - ~~comments~~
 - team
 - api 

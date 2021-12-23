@@ -75,7 +75,7 @@ class CommentListScreen extends Screen
         ];
     }
 
-    public function CreateOrUpdate(Request $request, Comment $comment)
+    public function CreateOrUpdate(Comment $comment,Request $request )
     {
         $comment->fill($request->get('comment'))->save();
         Toast::success('Comment Saved Successfully');

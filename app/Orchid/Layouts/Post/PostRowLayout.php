@@ -3,6 +3,7 @@
 namespace App\Orchid\Layouts\Post;
 
 use App\Models\Category;
+use App\Models\Tag;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
@@ -40,14 +41,22 @@ PostRowLayout extends Rows
                 Relation::make('post.categories')
                 ->fromModel(Category::class,'name','id')
                 ->title('Category')
+                ->required()
                 ->multiple(),
 
             ]),
             Quill::make('post.description')
             ->title('description')
             ->required(),
+
+            Relation::make('post.tags')
+            ->fromModel(Tag::class,'name','id')
+            ->multiple()
+            ->title('Tags'),
+
             Switcher::make('post.is_published')
                 ->sendTrueOrFalse()
+                ->value(false)
                 ->title('Is Published'),
 
             Picture::make('post.attachment_id')

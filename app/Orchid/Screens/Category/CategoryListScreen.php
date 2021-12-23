@@ -76,7 +76,7 @@ class CategoryListScreen extends Screen
             'category' => $category,
         ];
     }
-    public function CreateOrUpdate(Request $request,Category $category)
+    public function CreateOrUpdate(Category $category , Request $request)
     {
         $category->fill($request->get('category'))->save();
 
@@ -87,6 +87,7 @@ class CategoryListScreen extends Screen
     public function delete(Category $category)
     {
         $category->image()->delete();
+        $category->posts()->detach();
         $category->delete();
         Toast::success('Category Deleted Successfully');
     }
