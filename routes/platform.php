@@ -153,3 +153,19 @@ Route::screen('tags',\App\Orchid\Screens\Tags\TagsListScreen::class)
             ->push('All tags');
     });
 
+
+Route::screen('members',\App\Orchid\Screens\Team\TeamListScreen::class)
+    ->name('platform.team')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index')
+            ->push('Team');
+    });
+
+Route::screen('member/{team?}',\App\Orchid\Screens\Team\TeamEditScreen::class)
+    ->name('platform.edit.team')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.team')
+            ;
+    });

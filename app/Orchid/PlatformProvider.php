@@ -114,6 +114,12 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('lock')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles'),
+
+            Menu::make('Team')
+                ->icon('friends')
+                ->route('platform.team')
+                ->title('About'),
+
         ];
     }
 
