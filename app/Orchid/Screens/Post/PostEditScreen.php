@@ -80,6 +80,7 @@ class PostEditScreen extends Screen
     public function CreateOrUpdate(Post $post,Request $request)
     {
             $post->fill($request->get('post'));
+            $post->image=$request->get('post')['attachment_id'];
             if (!$this->exists){
             $post->user_id=Auth::id();
             }

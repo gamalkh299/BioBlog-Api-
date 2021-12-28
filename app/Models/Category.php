@@ -13,12 +13,12 @@ class Category extends Model
     use HasFactory,Filterable,Attachable;
 
 
-    protected $fillable=['name','description','attachment_id'];
+    protected $fillable=['name','description','image'];
     protected $allowedFilters = [
         'id',
         'name',
         'description',
-        'attachment_id',
+        'image',
         'created_at',
     ];
 
@@ -29,7 +29,7 @@ class Category extends Model
         'id',
         'name',
         'description',
-        'attachment_id',
+        'image',
         'created_at',
     ];
     public function posts()
@@ -39,6 +39,6 @@ class Category extends Model
 
     public function image(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Attachment::class, 'id', 'attachment_id')->withDefault();
+        return $this->hasOne(Attachment::class, 'id', 'image')->withDefault();
     }
 }

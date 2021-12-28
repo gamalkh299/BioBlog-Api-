@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    use ApiResponse;
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +46,20 @@ class PostController extends Controller
         $data = Post::latest()->take(15)->paginate();
         PostResource::collection($data);
         return $this->ApiResponse($data);
+
+    }
+
+    public function GetMostReaded()
+    {
+        $data = Post::all()->random(10);
+        PostResource::collection($data);
+        return $this->ApiResponse($data);
+
+    }
+
+    public function GetPostComments($id)
+    {
+
 
     }
 

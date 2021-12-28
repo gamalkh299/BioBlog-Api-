@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
@@ -23,6 +26,12 @@ class DatabaseSeeder extends Seeder
                   'user_id'=>$user->id
               ])->toArray());
           });
+
+          Team::factory(5)->create();
+
+          Category::factory(5)->create();
+
+          Tag::factory(15)->create();
 
 
 

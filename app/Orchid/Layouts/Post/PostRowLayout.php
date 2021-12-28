@@ -61,7 +61,7 @@ PostRowLayout extends Rows
 
             Picture::make('post.attachment_id')
             ->title('Upload Image')
-            ->targetId(),
+            ->targetUrl(),
 
 
         ];

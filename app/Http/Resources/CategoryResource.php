@@ -18,8 +18,9 @@ class CategoryResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'description'=> $this->description,
-            'image'=> $this->image->url(),
+            'image'=> $this->image,
             'created_at'=>$this->created_at,
+            'posts'=>PostResource::collection($this->posts),
 
         ];
     }

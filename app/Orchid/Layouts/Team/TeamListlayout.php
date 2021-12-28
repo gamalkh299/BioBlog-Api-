@@ -57,9 +57,9 @@ class TeamListlayout extends Table
                 ->width('150')
                 ->render(function (Team $team) {
                     // Please use view('path')
-                    if($team->attachment_id!=NULL){
-                        $image=$team->image;
-                        return "<img src='{$image->url()}'
+                    if($team->image!=NULL){
+
+                        return "<img src='{$team->image}'
                               alt='sample'
                               class='mw-100 d-block img-fluid'>";
                     }else{

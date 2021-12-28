@@ -49,7 +49,7 @@ class TeamRowslayout extends Rows
             Picture::make('team.attachment_id')
             ->title('image')
             ->required()
-            ->targetId(),
+            ->targetUrl(),
 
 
 

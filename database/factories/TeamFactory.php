@@ -3,16 +3,16 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Category;
+use App\Models\Team;
 
-class CategoryFactory extends Factory
+class TeamFactory extends Factory
 {
     /**
     * The name of the factory's corresponding model.
     *
     * @var  string
     */
-    protected $model = Category::class;
+    protected $model = Team::class;
 
     /**
     * Define the model's default state.
@@ -23,8 +23,11 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'description' => $this->faker->text,
-            'image' => $this->faker->imageUrl($width = 640, $height = 480),
+            'image' => $this->faker->imageUrl,
+            'job' => $this->faker->word,
+            'twitter' => $this->faker->title,
+            'facebook' => $this->faker->title,
+            'whatsapp' => $this->faker->phoneNumber,
         ];
     }
 }

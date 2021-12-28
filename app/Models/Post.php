@@ -13,12 +13,12 @@ class Post extends Model
 {
     use HasFactory, AsSource, Attachable,Filterable;
     protected $table='posts';
-    protected $fillable=['title','description','attachment_id','is_published','user_id'];
+    protected $fillable=['title','description','image','is_published','user_id'];
     protected $allowedFilters = [
         'id',
         'title',
         'description',
-        'attachment_id',
+        'image',
         'is_published',
         'user_id',
         'created_at',
@@ -31,7 +31,7 @@ class Post extends Model
         'id',
         'title',
         'description',
-        'attachment_id',
+        'image',
         'created_at',
     ];
 
@@ -43,7 +43,7 @@ class Post extends Model
 
     public function image(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Attachment::class, 'id', 'attachment_id')->withDefault();
+        return $this->hasOne(Attachment::class, 'id', 'image')->withDefault();
     }
 
     public function categories()

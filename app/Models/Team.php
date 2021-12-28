@@ -12,7 +12,7 @@ class Team extends Model
     use HasFactory,Filterable;
     protected $fillable=[
             'name',
-            'attachment_id',
+            'image',
             'job',
             'twitter',
             'facebook',
@@ -21,7 +21,7 @@ class Team extends Model
     protected $allowedFilters = [
         'id',
         'name',
-        'attachment_id',
+        'image',
         'job',
         'twitter',
         'facebook',
@@ -35,7 +35,7 @@ class Team extends Model
     protected $allowedSorts = [
         'id',
         'name',
-        'attachment_id',
+        'image',
         'job',
         'twitter',
         'facebook',
@@ -44,7 +44,7 @@ class Team extends Model
     ];
     public function image(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Attachment::class, 'id', 'attachment_id')->withDefault();
+        return $this->hasOne(Attachment::class, 'id', 'image')->withDefault();
     }
 
 

@@ -47,9 +47,9 @@ class CategoryListLayout extends Table
                 ->width('150')
                 ->render(function (Category $category) {
                     // Please use view('path')
-                    if($category->attachment_id!=NULL){
-                        $image=$category->image;
-                        return "<img src='{$image->url()}'
+                    if($category->image !=NULL){
+
+                        return "<img src='{$category->image}'
                               alt='sample'
                               class='mw-100 d-block img-fluid'>";
                     }else{

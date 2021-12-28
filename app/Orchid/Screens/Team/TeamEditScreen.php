@@ -75,7 +75,9 @@ class TeamEditScreen extends Screen
     public function CreateOrUpdate(Team $team, Request $request)
     {
 
-        $team->fill($request->get('team'))->save();
+        $team->fill($request->get('team'));
+        $team->image=$request->get('team')['attachment_id'];
+        $team->save();
         Toast::success('Member Saved Successfully');
         return redirect()->route('platform.team');
 

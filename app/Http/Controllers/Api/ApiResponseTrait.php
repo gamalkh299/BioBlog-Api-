@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-trait ApiResponse
+trait ApiResponseTrait
 {
 
     public function ApiResponse($data,$error=null,$code=200)

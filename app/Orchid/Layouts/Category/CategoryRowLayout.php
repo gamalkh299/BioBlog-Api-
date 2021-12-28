@@ -33,9 +33,9 @@ class CategoryRowLayout extends Rows
             ->title('description')
             ,
 
-            Picture::make('category.attachment_id')
+            Picture::make('category.image')
             ->title('Image')
-            ->targetId(),
+            ->targetUrl(),
 
         ];
     }

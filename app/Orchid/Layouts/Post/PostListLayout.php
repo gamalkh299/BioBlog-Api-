@@ -66,9 +66,9 @@ class PostListLayout extends Table
                     ->width('150')
                     ->render(function (Post $post) {
                         // Please use view('path')
-                        if($post->attachment_id!=NULL){
-                            $image=$post->image;
-                        return "<img src='{$image->url()}'
+                        if($post->image!=NULL){
+
+                        return "<img src='{$post->image}'
                               alt='sample'
                               class='mw-100 d-block img-fluid'>";
                         }else{
