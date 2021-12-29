@@ -30,8 +30,8 @@ class CommentController extends Controller
         $post=Post::find($id);
         $post->comments()->create([
             'comment'=> $request->comment,
-            'post_id'=> $request->post_id
-        ])
+            'post_id'=> $id,
+        ]);
 
 
     }
