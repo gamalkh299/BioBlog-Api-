@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function GetLatestPosts()
     {
-        $data = Post::latest()->take(15)->paginate();
+        $data = Post::with('user','categories','tags')->latest()->take(15)->paginate();
         PostResource::collection($data);
         return $this->ApiResponse($data);
 
@@ -51,7 +51,7 @@ class PostController extends Controller
 
     public function GetMostReaded()
     {
-        $data = Post::all()->random(10);
+        $data = Post::with('user','categories','tags')->inRandomOrder()->take(15)->get();
         PostResource::collection($data);
         return $this->ApiResponse($data);
 
