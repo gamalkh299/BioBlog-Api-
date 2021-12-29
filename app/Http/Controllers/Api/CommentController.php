@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    use ApiResponseTrait;
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +32,8 @@ class CommentController extends Controller
         $post=Post::find($id);
         $post->comments()->create([
             'comment'=> $request->comment,
-            'post_id'=> $id,
         ]);
+        return $this->ApiResponse(new PostResource($post));
 
 
     }
