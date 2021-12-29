@@ -18,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data=Category::with('posts')->paginate(15);
+        $data=Category::paginate(15);
         CategoryResource::collection($data);
         return $this->ApiResponse($data);
 

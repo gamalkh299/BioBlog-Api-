@@ -23,8 +23,8 @@ class CommentFactory extends Factory
     {
         return [
             'comment' => $this->faker->text,
-            'post_id' => \App\Models\Post::factory(),
-            'user_id' => \App\Models\User::factory(),
+//            'post_id' => \App\Models\Post::factory(),
+
         ];
     }
 }
