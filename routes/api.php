@@ -29,3 +29,6 @@ Route::get('/categories',[\App\Http\Controllers\Api\CategoryController::class,'i
 Route::get('/category/show/{id}',[\App\Http\Controllers\Api\CategoryController::class,'show']);
 
 Route::post('/comment/post/{id}',[\App\Http\Controllers\Api\CommentController::class,'store']);
+
+Route::get('/tags',[\App\Http\Controllers\Api\TagController::class,'index']);
+Route::get('/tag/{id}',[\App\Http\Controllers\Api\TagController::class,'show']);
