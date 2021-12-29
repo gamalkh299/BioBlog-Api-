@@ -51,15 +51,10 @@ class PostController extends Controller
 
     public function GetMostReaded()
     {
-        $data = Post::with('user','categories','tags')->inRandomOrder()->take(15)->get();
-        PostResource::collection($data);
-        return $this->ApiResponse($data);
+        $data = Post::with('user','categories','tags')->inRandomOrder()->take(15)->paginate();
 
-    }
-
-    public function GetPostComments($id)
-    {
-
+        $posts=PostResource::collection($data);
+        return $this->ApiResponse($posts);
 
     }
 

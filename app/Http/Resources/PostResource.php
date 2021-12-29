@@ -21,10 +21,11 @@ class PostResource extends JsonResource
                     'title'=>$this->title,
                     'description'=>$this->description,
                     'image'=> $this->image,
+                    'created_at'=> \Carbon\Carbon::parse($this->created_at)->diffForHumans(),
                     'user'=>$this->user,
                     'tags'=>$this->tags,
                     'categories'=>$this->categories,
-                    'comments'=>$this->comments
+                    'comments'=>$this->comments,
 
         ];
     }
