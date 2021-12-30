@@ -33,7 +33,7 @@ class CommentController extends Controller
         $post->comments()->create([
             'comment'=> $request->comment,
         ]);
-        return $this->ApiResponse(new PostResource($post));
+        return $this->ApiResponse('Comment saved successfully');
 
 
     }
