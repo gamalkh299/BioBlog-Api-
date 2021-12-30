@@ -35,3 +35,5 @@ Route::get('/tag/{id}',[\App\Http\Controllers\Api\TagController::class,'show']);
 
 
 Route::post('/contact/store',\App\Http\Controllers\Api\ContactUsController::class);
+
+Route::post('/search',\App\Http\Controllers\Api\SearchController::class);
