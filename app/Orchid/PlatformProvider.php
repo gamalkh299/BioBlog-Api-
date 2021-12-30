@@ -120,6 +120,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.team')
                 ->title('About'),
 
+            Menu::make('Contact Us Messages')
+            ->route('platform.contacts')
+            ->icon('bubble')
+            ->title('Contact us')
+
         ];
     }
 

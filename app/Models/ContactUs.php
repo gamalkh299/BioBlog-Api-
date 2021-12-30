@@ -16,4 +16,22 @@ class ContactUs extends Model
         'phone',
         'message'
     ];
+
+    protected $allowedFilters = [
+        'name',
+        'email',
+        'phone',
+        'message'
+    ];
+
+    /**
+     * @var array
+     */
+    protected $allowedSorts = [
+        'name',
+        'email',
+        'phone',
+        'message'
+    ];
+
 }

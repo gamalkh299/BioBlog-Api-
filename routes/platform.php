@@ -169,3 +169,20 @@ Route::screen('member/{team?}',\App\Orchid\Screens\Team\TeamEditScreen::class)
             ->parent('platform.team')
             ;
     });
+
+Route::screen('/contacts',\App\Orchid\Screens\ContactUs\ContactUsListScreen::class)
+    ->name('platform.contacts')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index');
+    });
+
+Route::screen('/contact/{contact}',\App\Orchid\Screens\ContactUs\ContactUsShowScreen::class)
+    ->name('platform.contact.show')
+    ->breadcrumbs(function (Trail $trail){
+        return $trail
+            ->parent('platform.index');
+    });
+
+
+
