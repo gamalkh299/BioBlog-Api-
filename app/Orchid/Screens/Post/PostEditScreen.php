@@ -86,7 +86,9 @@ class PostEditScreen extends Screen
             }
             $post->save();
             $post->categories()->sync($request->get('post')['categories']);
+            if (isset($request->get('post')['tags'])){
             $post->tags()->sync($request->get('post')['tags']);
+            }
             Toast::success('Post Saved Successfully');
             return  redirect()->route('platform.posts');
 
