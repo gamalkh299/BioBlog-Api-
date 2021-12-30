@@ -32,3 +32,6 @@ Route::post('/comment/post/{id}',[\App\Http\Controllers\Api\CommentController::c
 
 Route::get('/tags',[\App\Http\Controllers\Api\TagController::class,'index']);
 Route::get('/tag/{id}',[\App\Http\Controllers\Api\TagController::class,'show']);
+
+
+Route::post('/contact/store',\App\Http\Controllers\Api\ContactUsController::class);
